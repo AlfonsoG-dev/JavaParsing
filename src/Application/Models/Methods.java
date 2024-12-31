@@ -16,6 +16,16 @@ public class Methods {
         op = new FileOperations(rootPath);
     }
 
+    private boolean isLineMethod(String line) {
+        boolean isMethod = false;
+        String m = line.split("\\(")[0];
+        String[] spaces = m.split(" ");
+        if(spaces.length > 1) {
+            isMethod = true;
+        }
+        return isMethod;
+    }
+
     public List<String> getMethodsFromFile(String filePath)  {
         List<String> lines = null;
         List<String> declare = Arrays.asList(DECLARATION_KEY_WORDS);
@@ -27,21 +37,11 @@ public class Methods {
                 String[] spaces = line.split(" ");
                 if(declare.contains(spaces[0])) {
                     methods.add(line.replace("{", "").trim());
-                } else {
-                    /**
-                     * TODO: when the line method doesn't start with an accessor.
-                     * - Use the () and the end of line {.
-                     * - For some reason some statements will be included with the previous conditions.
-                     * >- For instance an if statement will be included.
-                     * - I thing the solution is by creating the condition evaluating the return type.
-                     * >- The if statement or similar doesn't have a return type.
-                     * >- In order to get the return type we must parse the line into 3 separated sections.
-                     * >>- accessor - return type - method name.
-                     * >- Some lines will have more sections when (static or final) keywords are use.
-                     */
+                } else if(line.contains("(") && line.contains(")") &&
+                 line.endsWith("{") && isLineMethod(line)) {
+                    methods.add(line.replace("{", "").trim());
                 }
             }
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
