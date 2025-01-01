@@ -25,20 +25,48 @@ public class Methods {
         }
         return isMethod;
     }
+    /**
+     * only build multiline arguments of method when there is 3 levels of lines.
+     *                           public int count (int o,
+     *                           int c, 
+     *                           inc b) {
+     * @param lines the file lines.
+     * @param i the iteration variable.
+     * @return the line concatenated with the rest of lines.
+     */
+    private String buildMultiLineMethod(List<String> lines, int i) {
+        int n = i+1;
+        String l = lines.get(i).trim(), e = "", b = "", c = "";
+        // FIXME: find a better way to build from 4 or more lines.
+        while(n < lines.size()) {
+            if(lines.get(n).trim().endsWith("{")) {
+                e = " " + lines.get(n).trim();
+                break;
+            } else if(lines.get(n).trim().contains(",")) {
+                b += l + " " + lines.get(n).trim();
+                ++n;
+            }
+        }
+        if(b.isEmpty()) {
+            b = l;
+        }
+        c = b.concat(e);
+        return c;
+    }
 
     public List<String> getMethodsFromFile(String filePath)  {
         List<String> lines = null;
-        List<String> declare = Arrays.asList(DECLARATION_KEY_WORDS);
         List<String> methods = new ArrayList<>();
         try {
             lines = op.getLinesOfFile(filePath);
             for(int i=0; i<lines.size(); ++i) {
                 String line = lines.get(i).trim();
-                String[] spaces = line.split(" ");
-                if(declare.contains(spaces[0])) {
-                    methods.add(line.replace("{", "").trim());
-                } else if(line.contains("(") && line.contains(")") &&
-                 line.endsWith("{") && isLineMethod(line)) {
+                if(line.endsWith(",")) {
+                    String c = buildMultiLineMethod(lines, i);
+                    if(c.contains("(")) {
+                        methods.add(c.replace("{", "").trim());
+                    }
+                } else if(line.contains("(") && line.contains(")") && line.endsWith("{") && isLineMethod(line)) {
                     methods.add(line.replace("{", "").trim());
                 }
             }
