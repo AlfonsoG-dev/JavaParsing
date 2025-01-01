@@ -1,14 +1,13 @@
 package docs;
 
 public class JavaSample {
-    private int age;
-    public JavaSample(int age) {
-        this.age = age;
+    private final static int age = 18;
+    public JavaSample() {
     }
-    public final static void greet() {
-        if(1 <= 2) {
+    public final static void greet(int age) {
+        if(JavaSample.age <= age) {
+            System.out.println("Hellow Mother");
         }
-        System.out.println("Hellow Mother");
     }
     public boolean isRunning(String b, String a,
      int c, int m,
