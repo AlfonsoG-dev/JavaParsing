@@ -3,14 +3,11 @@ package Application.Models;
 import Application.Operations.FileOperations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Methods {
 
     private FileOperations op;
-    // FIXME: add more keywords
-    public final static String[] DECLARATION_KEY_WORDS = {"public", "private", "protected"};
 
     public Methods(String rootPath) {
         op = new FileOperations(rootPath);
