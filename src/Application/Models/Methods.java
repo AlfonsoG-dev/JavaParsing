@@ -63,7 +63,7 @@ public class Methods {
                     if(c.contains("(")) {
                         methods.add(c.replace("{", "").trim());
                     }
-                } else if(line.contains("(") && line.contains(")") && line.endsWith("{") && isLineMethod(line)) {
+                } else if(line.contains("(") && line.contains(")") && isLineMethod(line)) {
                     methods.add(line.replace("{", "").trim());
                 }
             }

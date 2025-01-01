@@ -2,7 +2,8 @@ package docs;
 
 public class JavaSample {
     private final static int age = 18;
-    public JavaSample() {
+    public JavaSample()
+    {
     }
     public final static void greet(int age) {
         if(JavaSample.age <= age) {
