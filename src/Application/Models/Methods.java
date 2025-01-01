@@ -9,8 +9,8 @@ public class Methods {
 
     private FileOperations op;
 
-    public Methods(String rootPath) {
-        op = new FileOperations(rootPath);
+    public Methods() {
+        op = new FileOperations();
     }
 
     private boolean isLineMethod(String line) {

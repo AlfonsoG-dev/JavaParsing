@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.BufferedReader;
 
 import java.nio.file.Files;
@@ -13,11 +12,6 @@ import java.nio.file.Path;
 import java.nio.file.DirectoryStream;
 
 public class FileUtils {
-    private String rootPath;
-
-    public FileUtils(String rootPath) {
-        this.rootPath = rootPath;
-    }
     public FileUtils() {}
 
     public List<File> getDirectorFiles(DirectoryStream<Path> dir) {

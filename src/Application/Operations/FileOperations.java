@@ -9,12 +9,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class FileOperations {
-    private String rootPath;
     private FileUtils fileUtils;
 
-    public FileOperations(String rootPath) {
-        this.rootPath = rootPath;
-        this.fileUtils = new FileUtils(rootPath);
+    public FileOperations() {
+        this.fileUtils = new FileUtils();
     }
 
     public List<File> getFilesOfDirectory(String dirPath) throws IOException {
