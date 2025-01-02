@@ -4,6 +4,14 @@
 
 ![expected_output](./docs/sample.png)
 
+# References
+- [Coogle](https://www.youtube.com/watch?v=wK1HjnwDQng&t=1s) by *Tsoding*.
+
+# Dependencies
+- [Java 23](https://www.oracle.com/java/technologies/downloads/)
+- [java-build-tool](https://github.com/AlfonsoG-dev/javaBuild.git)
+- [java 23 documentation](https://docs.oracle.com/en/java/javase/23/docs/api/index.html)
+
 # Installation
 1. Copy or clone the repository
 ```shell
