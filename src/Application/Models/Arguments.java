@@ -3,15 +3,13 @@ package Application.Models;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Arguments extends Methods {
+public class Arguments {
 
-    public Arguments() {
-        super();
+    private Methods m;
+    public Arguments(Methods m) {
+        this.m = m;
     }
 
-    public Arguments(List<String> lines) {
-        super(lines);
-    }
     private String buildMultilineArgument(String[] arguments) {
         String l = "", b = "( ";
         for(int j=0; j<arguments.length; ++j) {
@@ -23,7 +21,7 @@ public class Arguments extends Methods {
     }
 
     public List<String> getArgumentsFromLine() {
-        List<String> methods = super.getMethodsFromFile();
+        List<String> methods = m.getMethodsFromFile();
         List<String> props = new ArrayList<>();
 
         for(int i=0; i<methods.size(); ++i) {

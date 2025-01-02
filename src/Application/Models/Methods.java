@@ -83,6 +83,19 @@ public class Methods {
         return methods;
     }
 
+    public List<String> getMethodsName() {
+        List<String> names = new ArrayList<>();
+        for(int i=0; i<lines.size(); ++i) {
+            String line = lines.get(i).trim();
+            if(line.length() > 1 && line.contains("(") && isLineMethod(line)) {
+                String byMethod = line.split("\\(")[0];
+                String[] spaces = byMethod.split(" ");
+                names.add(spaces[spaces.length-1]);
+            }
+        }
+        return names;
+    }
+
     public int getMethodLineNumber(String methodName) {
         int lineNumber = 0;
         List<String> names = new ArrayList<>();
