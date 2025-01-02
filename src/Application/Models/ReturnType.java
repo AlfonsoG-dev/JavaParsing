@@ -8,16 +8,21 @@ import java.util.Arrays;
 public class ReturnType {
 
     private Methods m;
+    private String filePath;
     private final static String[] DECLARATION_KEYWORDS = {"public", "private", "protected"};
 
-    public ReturnType() {
+    public ReturnType(String filePath) {
+        this.filePath = filePath;
         m = new Methods();
+        m.initializeLinesOfFile(filePath);
     }
-
-    public List<String> getReturnTypeFromLine(String filePath) {
-        List<String> methods = m.getMethodsFromFile(filePath); 
+    
+    public List<String> getReturnTypeFromLine() {
+        List<String> methods =  m.getMethodsFromFile(filePath); 
         List<String> types = new ArrayList<>();
+        // FIXME: change scope to global or private
         List<String> declarations = Arrays.asList(DECLARATION_KEYWORDS);
+
         for (int i=0; i<methods.size(); ++i) {
             String byMethod = methods.get(i).split("\\(")[0];
             String[] spaces = byMethod.split(" ");

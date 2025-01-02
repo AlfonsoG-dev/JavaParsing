@@ -2,11 +2,8 @@ package Application.Models;
 
 import Application.Operations.FileOperations;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class Methods {
 
@@ -21,8 +18,12 @@ public class Methods {
         op = new FileOperations();
     }
     
-    public void initializeLinesOfFile(String filePath) throws IOException {
-        lines = op.getLinesOfFile(filePath);
+    public void initializeLinesOfFile(String filePath){
+        try {
+            lines = op.getLinesOfFile(filePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean isLineMethod(String line) {
@@ -63,7 +64,7 @@ public class Methods {
         return l;
     }
 
-    public List<String> getMethodsFromFile(String filePath)  {
+    public List<String> getMethodsFromFile()  {
         List<String> methods = new ArrayList<>();
         for(int i=0; i<lines.size(); ++i) {
             String line = lines.get(i).trim();
