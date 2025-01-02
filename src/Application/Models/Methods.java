@@ -33,22 +33,22 @@ public class Methods {
      */
     private String buildMultiLineMethod(List<String> lines, int i) {
         int n = i+1;
-        String l = lines.get(i).trim(), e = "", b = "", c = "";
-        // FIXME: find a better way to build from 4 or more lines.
-        while(n < lines.size()) {
-            if(lines.get(n).trim().endsWith("{")) {
-                e = " " + lines.get(n).trim();
+        String l = lines.get(i).trim();
+        while(true) {
+            boolean a = lines.get(n).trim().contains(","), b = lines.get(n).trim().contains("{");
+            if(n >= lines.size()) {
                 break;
-            } else if(lines.get(n).trim().contains(",")) {
-                b += l + " " + lines.get(n).trim();
+            }
+            if(a && !b) {
+                l += " " + lines.get(n).trim();
                 ++n;
             }
+            if(b) {
+                l += " " + lines.get(n).trim();
+                break;
+            }
         }
-        if(b.isEmpty()) {
-            b = l;
-        }
-        c = b.concat(e);
-        return c;
+        return l;
     }
 
     public List<String> getMethodsFromFile(String filePath)  {
@@ -58,11 +58,9 @@ public class Methods {
             lines = op.getLinesOfFile(filePath);
             for(int i=0; i<lines.size(); ++i) {
                 String line = lines.get(i).trim();
-                if(line.endsWith(",")) {
-                    String c = buildMultiLineMethod(lines, i);
-                    if(c.contains("(")) {
-                        methods.add(c.replace("{", "").trim());
-                    }
+                if(line.contains("(") && line.endsWith(",")) {
+                    String l = buildMultiLineMethod(lines, i);
+                    methods.add(l.replace("{", "").trim());
                 } else if(line.contains("(") && line.contains(")") && isLineMethod(line)) {
                     methods.add(line.replace("{", "").trim());
                 }
