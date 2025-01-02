@@ -5,25 +5,19 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ReturnType {
+public class ReturnType extends Methods {
 
-    private Methods m;
     private final static String[] DECLARATION_KEYWORDS = {"public", "private", "protected"};
 
-    public ReturnType(String filePath) {
-        m = new Methods();
-        m.initializeLinesOfFile(filePath);
+    public ReturnType(List<String> lines) {
+        super(lines);
     }
     public ReturnType() {
-        m = new Methods();
-    }
-    
-    public void initializeLinesOfFile(String filePath) {
-        m.initializeLinesOfFile(filePath);
+        super();
     }
     
     public List<String> getReturnTypeFromLine() {
-        List<String> methods =  m.getMethodsFromFile(); 
+        List<String> methods =  super.getMethodsFromFile(); 
         List<String> types = new ArrayList<>();
         // FIXME: change scope to global or private
         List<String> declarations = Arrays.asList(DECLARATION_KEYWORDS);
