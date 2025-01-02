@@ -1,10 +1,10 @@
-import Application.Models.ReturnType;
+import Application.Models.Arguments;
 class JavaParsing {
     public static void main(String[] args) {
-        ReturnType m = new ReturnType();
+        Arguments m = new Arguments();
         m.initializeLists("./docs/JavaSample.java");
         // to test - get methods
-        m.getReturnTypeFromLine()
+        m.getArgumentsFromLine()
         .stream()
         .forEach(System.out::println);
     }
