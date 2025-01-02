@@ -2,7 +2,7 @@
 - A simple java parsing application that extracts the methods and prints the declarations.
 - Using the Java files you can get the return type, method name and parameters base on the declarations.
 
-!(expected_output)[./docs/sample.png]
+![expected_output](./docs/sample.png)
 
 # Installation
 1. Copy or clone the repository
