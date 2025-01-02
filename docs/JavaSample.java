@@ -19,3 +19,5 @@ public class JavaSample {
         return 0;
     }
 }
+record Person(int age, String name, boolean married) {
+}
