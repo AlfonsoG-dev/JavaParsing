@@ -4,12 +4,16 @@ import Application.Operations.FileOperations;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 public class Methods {
+    public final static String[] DECLARATION_KEYWORDS = {"public", "private", "protected"};
 
     private FileOperations op;
     private List<String> lines;
+    public List<String> declarations;
 
+    
     public Methods(List<String> lines) {
         op = new FileOperations();
         this.lines = lines;
@@ -18,8 +22,9 @@ public class Methods {
         op = new FileOperations();
     }
     
-    public void initializeLinesOfFile(String filePath){
+    public void initializeLists(String filePath){
         try {
+            declarations = Arrays.asList(DECLARATION_KEYWORDS);
             lines = op.getLinesOfFile(filePath);
         } catch (Exception e) {
             e.printStackTrace();
