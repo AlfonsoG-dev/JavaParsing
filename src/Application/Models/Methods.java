@@ -2,15 +2,27 @@ package Application.Models;
 
 import Application.Operations.FileOperations;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Methods {
 
     private FileOperations op;
+    private List<String> lines;
 
+    public Methods(List<String> lines) {
+        op = new FileOperations();
+        this.lines = lines;
+    }
     public Methods() {
         op = new FileOperations();
+    }
+    
+    public void initializeLinesOfFile(String filePath) throws IOException {
+        lines = op.getLinesOfFile(filePath);
     }
 
     private boolean isLineMethod(String line) {
@@ -52,23 +64,39 @@ public class Methods {
     }
 
     public List<String> getMethodsFromFile(String filePath)  {
-        List<String> lines = null;
         List<String> methods = new ArrayList<>();
-        try {
-            lines = op.getLinesOfFile(filePath);
-            for(int i=0; i<lines.size(); ++i) {
-                String line = lines.get(i).trim();
-                if(line.contains("(") && line.endsWith(",")) {
-                    String l = buildMultiLineMethod(lines, i);
-                    methods.add(l.replace("{", "").trim());
-                } else if(line.contains("(") && line.contains(")") && isLineMethod(line)) {
-                    methods.add(line.replace("{", "").trim());
-                }
+        for(int i=0; i<lines.size(); ++i) {
+            String line = lines.get(i).trim();
+            if(line.contains("(") && line.endsWith(",")) {
+                String l = buildMultiLineMethod(lines, i);
+                methods.add(l.replace("{", "").trim());
+            } else if(line.contains("(") && line.contains(")") && isLineMethod(line)) {
+                methods.add(line.replace("{", "").trim());
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         return methods;
+    }
+
+    public int getMethodLineNumber(String methodName) {
+        int lineNumber = 0;
+        List<String> names = new ArrayList<>();
+        for(int i=0; i<lines.size(); ++i) {
+            String line = lines.get(i).trim();
+            if(line.length() > 1 && line.contains("(") && isLineMethod(line)) {
+                String byMethod = line.split("\\(")[0];
+                String[] spaces = byMethod.split(" ");
+                names.add(
+                    String.format("%s:%s", (i+1), spaces[spaces.length-1])
+                );
+            }
+        }
+        for(String n: names) {
+            String[] values = n.split(":");
+            if(values[1].toLowerCase().equals(methodName.toLowerCase())) {
+                lineNumber = Integer.parseInt(values[0]);
+            }
+        }
+        return lineNumber;
     }
     
 }
