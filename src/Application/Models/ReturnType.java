@@ -3,7 +3,6 @@ package Application.Models;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ReturnType extends Methods {
 
