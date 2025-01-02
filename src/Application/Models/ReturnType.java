@@ -14,6 +14,13 @@ public class ReturnType {
         m = new Methods();
         m.initializeLinesOfFile(filePath);
     }
+    public ReturnType() {
+        m = new Methods();
+    }
+    
+    public void initializeLinesOfFile(String filePath) {
+        m.initializeLinesOfFile(filePath);
+    }
     
     public List<String> getReturnTypeFromLine() {
         List<String> methods =  m.getMethodsFromFile(); 
