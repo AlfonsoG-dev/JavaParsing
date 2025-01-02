@@ -53,7 +53,8 @@ public class Methods {
         int n = i+1;
         String l = lines.get(i).trim();
         while(true) {
-            boolean a = lines.get(n).trim().contains(","), b = lines.get(n).trim().contains("{");
+            boolean a = lines.get(n).trim().contains(","), b = lines.get(n).trim().contains("{"),
+            c = lines.get(n).trim().contains(")");
             if(n >= lines.size()) {
                 break;
             }
@@ -61,7 +62,7 @@ public class Methods {
                 l += " " + lines.get(n).trim();
                 ++n;
             }
-            if(b) {
+            if(b || c) {
                 l += " " + lines.get(n).trim();
                 break;
             }

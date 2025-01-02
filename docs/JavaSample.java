@@ -12,7 +12,8 @@ public class JavaSample {
     }
     public boolean isRunning(String b, String a,
      int c, int m,
-      String[] as) {
+      String[] as) 
+    {
         return false;
     }
     int count() {
