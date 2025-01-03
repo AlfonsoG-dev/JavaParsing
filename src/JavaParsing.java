@@ -1,11 +1,13 @@
 import Application.Models.*;
+import Application.Utils.PrintFormat;
 
 import java.util.List;
 
 class JavaParsing {
     public static void main(String[] args) {
         Methods m = new Methods();
-        m.initializeLists("./docs/JavaSample.java");
+        String filePath = "./docs/JavaSample.java";
+        m.initializeLists(filePath);
 
         Arguments a = new Arguments(m);
         ReturnType r = new ReturnType(m);
@@ -17,8 +19,10 @@ class JavaParsing {
 
         int max = methods.size();
 
+        PrintFormat p = new PrintFormat(filePath, m);
+
         for(int i=0; i<max; ++i) {
-            System.out.println(types.get(i) + " -> " + methods.get(i) +  " :: " + props.get(i));
+            p.printLineMethod(methods.get(i), types.get(i), props.get(i));
         }
 
     }
