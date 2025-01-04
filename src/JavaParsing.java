@@ -6,7 +6,7 @@ import java.util.List;
 class JavaParsing {
     public static void main(String[] args) {
         Methods m = new Methods();
-        String filePath = "./docs/JavaSample.java";
+        String filePath = "./src/Application/Utils/FileUtils.java";
         m.initializeLists(filePath);
 
         Arguments a = new Arguments(m);
