@@ -6,26 +6,22 @@ import java.util.List;
 class JavaParsing {
     public static void main(String[] args) {
         Methods m = new Methods();
-        String filePath = "./src/Application/Utils/FileUtils.java";
+        String filePath = "./src/Application/Models/Methods.java";
         m.initializeLists(filePath);
 
         Arguments a = new Arguments(m);
         ReturnType r = new ReturnType(m);
 
-        List<String> methods = m.getMethodsName();
+        List<String> props = m.getMethodsFromFile();
 
-        int max = methods.size();
+        int max = props.size();
 
         PrintFormat p = new PrintFormat(filePath, m);
 
-        for(int i=0; i<max; ++i) {
-            String method = methods.get(i);
-            p.printLineMethod(
-                method,
-                r.getReturnTypeOfMethod(method),
-                a.getArgumentsOfMethod(method)
-            );
-        }
+        props
+        .stream()
+        .forEach(System.out::println);
+
 
     }
 }

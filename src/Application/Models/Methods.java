@@ -25,7 +25,12 @@ public class Methods {
     public void initializeLists(String filePath){
         try {
             declarations = Arrays.asList(DECLARATION_KEYWORDS);
-            lines = op.getLinesOfFile(filePath);
+            lines = op.getLinesOfFile(filePath)
+                .stream()
+                .filter(l -> !l.trim().startsWith("}") && !l.trim().endsWith(";") && !l.trim().startsWith(")") && !l.trim().startsWith("*"))
+                .filter(l -> !l.isEmpty() && !l.contains(".") && !l.contains("="))
+                .toList();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,10 +38,12 @@ public class Methods {
 
     private boolean isLineMethod(String line) {
         boolean isMethod = false;
-        String m = line.split("\\(")[0];
-        String[] spaces = m.split(" ");
-        if(spaces.length > 1) {
-            isMethod = true;
+        if(line.contains("(") && line.contains(")")) {
+            String m = line.split("\\(")[0];
+            String[] spaces = m.split(" ");
+            if(spaces.length > 1) {
+                isMethod = true;
+            }
         }
         return isMethod;
     }
@@ -53,8 +60,10 @@ public class Methods {
         int n = i+1;
         String l = lines.get(i).trim();
         while(true) {
-            boolean a = lines.get(n).trim().contains(","), b = lines.get(n).trim().contains("{"),
-            c = lines.get(n).trim().contains(")");
+            boolean
+                a = lines.get(n).trim().contains(","),
+                b = lines.get(n).trim().contains("{"),
+                c = lines.get(n).trim().contains(")");
             if(n >= lines.size()) {
                 break;
             }
@@ -76,9 +85,9 @@ public class Methods {
             String line = lines.get(i).trim();
             if(line.contains("(") && line.endsWith(",")) {
                 String l = buildMultiLineMethod(lines, i);
-                methods.add(l.replace("{", "").trim());
-            } else if(line.contains("(") && line.contains(")") && isLineMethod(line)) {
-                methods.add(line.replace("{", "").trim());
+                methods.add(l.replace("{", "").replace("}", "").trim());
+            } else if(isLineMethod(line)) {
+                methods.add(line.replace("{", "").replace("}", "").trim());
             }
         }
         return methods;
