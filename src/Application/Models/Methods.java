@@ -96,6 +96,14 @@ public class Methods {
         }
         return names;
     }
+    public int getMethodIndex(String methodName) {
+        int index = 0;
+        List<String> names = getMethodsName();
+        if(names.contains(methodName)) {
+            index = names.indexOf(methodName);
+        }
+        return index;
+    }
 
     public int getMethodLineNumber(String methodName) {
         int lineNumber = 0;

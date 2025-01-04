@@ -26,4 +26,8 @@ public class ReturnType {
         return types;
     }
 
+    public String getReturnTypeOfMethod(String methodName) {
+        return getReturnTypeFromLine().get(m.getMethodIndex(methodName));
+    }
+
 }

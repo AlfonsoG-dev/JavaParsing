@@ -39,5 +39,8 @@ public class Arguments {
         }
         return props;
     }
+    public String getArgumentsOfMethod(String methodName) {
+        return getArgumentsFromLine().get(m.getMethodIndex(methodName));
+    }
     
 }
