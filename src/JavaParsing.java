@@ -12,16 +12,19 @@ class JavaParsing {
         Arguments a = new Arguments(m);
         ReturnType r = new ReturnType(m);
 
-        List<String> props = m.getMethodsFromFile();
+        List<String> declarations = m.getMethodsFromFile();
 
-        int max = props.size();
+        int max = declarations.size();
 
         PrintFormat p = new PrintFormat(filePath, m);
 
-        props
-        .stream()
-        .forEach(System.out::println);
-
+        for(int i=0; i<max; ++i) {
+            p.printLineMethod(
+                m.getMethodsName().get(i),
+                r.getReturnTypeFromLine().get(i),
+                a.getArgumentsFromLine().get(i)
+            );
+        }
 
     }
 }
