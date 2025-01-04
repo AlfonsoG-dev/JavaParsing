@@ -12,7 +12,6 @@ public class Methods {
     private FileOperations op;
     private List<String> lines;
     public List<String> declarations;
-
     
     public Methods(List<String> lines) {
         op = new FileOperations();
@@ -94,14 +93,12 @@ public class Methods {
     }
 
     public List<String> getMethodsName() {
-        List<String> names = new ArrayList<>();
-        for(int i=0; i<lines.size(); ++i) {
-            String line = lines.get(i).trim();
-            if(line.length() > 1 && line.contains("(") && isLineMethod(line)) {
-                String byMethod = line.split("\\(")[0];
-                String[] spaces = byMethod.split(" ");
-                names.add(spaces[spaces.length-1]);
-            }
+        List<String> names = new ArrayList<>(), methods = getMethodsFromFile();
+        for(int i=0; i<methods.size(); ++i) {
+            String line = methods.get(i).trim();
+            String byMethod = line.split("\\(")[0];
+            String[] spaces = byMethod.split(" ");
+            names.add(spaces[spaces.length-1]);
         }
         return names;
     }
@@ -117,9 +114,10 @@ public class Methods {
     public int getMethodLineNumber(String methodName) {
         int lineNumber = 0;
         List<String> names = new ArrayList<>();
+        // FIXME: take the file original lines to get line number
         for(int i=0; i<lines.size(); ++i) {
             String line = lines.get(i).trim();
-            if(line.length() > 1 && line.contains("(") && isLineMethod(line)) {
+            if(isLineMethod(line)) {
                 String byMethod = line.split("\\(")[0];
                 String[] spaces = byMethod.split(" ");
                 names.add(

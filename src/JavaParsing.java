@@ -18,6 +18,9 @@ class JavaParsing {
 
         PrintFormat p = new PrintFormat(filePath, m);
 
+        System.out.println(
+            m.getMethodsName().size()  + " | " + r.getReturnTypeFromLine().size() + " | " + a.getArgumentsFromLine().size() + "\n"
+        );
         for(int i=0; i<max; ++i) {
             p.printLineMethod(
                 m.getMethodsName().get(i),
