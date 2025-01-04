@@ -13,8 +13,8 @@ public class PrintFormat {
         f = new File(filePath);
     }
 
-    public void printLineMethod(String method, String returnType, String prop) {
-        int lineNumber = m.getMethodLineNumber(method);
+    public void printLineMethod(String completeMethod,String method, String returnType, String prop) {
+        int lineNumber = m.getMethodLineNumber(completeMethod, f.getPath());
         System.out.println(
             String.format(
                 "%s:%s  %s -> %s%s",f.getPath(), lineNumber, returnType, method, prop

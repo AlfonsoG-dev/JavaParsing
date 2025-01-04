@@ -2,6 +2,10 @@ package Application.Models;
 
 import Application.Operations.FileOperations;
 
+import java.io.LineNumberReader;
+import java.io.File;
+import java.io.FileReader;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -110,28 +114,19 @@ public class Methods {
         }
         return index;
     }
-
-    public int getMethodLineNumber(String methodName) {
-        int lineNumber = 0;
-        List<String> names = new ArrayList<>();
-        // FIXME: take the file original lines to get line number
-        for(int i=0; i<lines.size(); ++i) {
-            String line = lines.get(i).trim();
-            if(isLineMethod(line)) {
-                String byMethod = line.split("\\(")[0];
-                String[] spaces = byMethod.split(" ");
-                names.add(
-                    String.format("%s:%s", (i+1), spaces[spaces.length-1])
-                );
+    public int getMethodLineNumber(String name, String filePath) {
+        int number = 0;
+        try (LineNumberReader lr = new LineNumberReader(new FileReader(new File(filePath)))) {
+            while(lr.ready()) {
+                if(lr.readLine().contains(name)) {
+                    number = lr.getLineNumber();
+                }
             }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        for(String n: names) {
-            String[] values = n.split(":");
-            if(values[1].toLowerCase().equals(methodName.toLowerCase())) {
-                lineNumber = Integer.parseInt(values[0]);
-            }
-        }
-        return lineNumber;
+        return number;
     }
     
 }

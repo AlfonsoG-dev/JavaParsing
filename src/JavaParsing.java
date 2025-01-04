@@ -23,6 +23,7 @@ class JavaParsing {
         );
         for(int i=0; i<max; ++i) {
             p.printLineMethod(
+                declarations.get(i),
                 m.getMethodsName().get(i),
                 r.getReturnTypeFromLine().get(i),
                 a.getArgumentsFromLine().get(i)
