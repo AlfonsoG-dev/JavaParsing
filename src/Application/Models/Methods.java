@@ -30,7 +30,7 @@ public class Methods {
             declarations = Arrays.asList(DECLARATION_KEYWORDS);
             lines = op.getLinesOfFile(filePath)
                 .stream()
-                .filter(l -> !l.trim().startsWith("}") && !l.trim().endsWith(";") && !l.trim().startsWith(")") && !l.trim().startsWith("*"))
+                .filter(l -> !l.trim().startsWith("}") && !l.trim().startsWith(")") && !l.trim().startsWith("*"))
                 .filter(l -> !l.isEmpty() && !l.contains(".") && !l.contains("="))
                 .toList();
 
@@ -116,6 +116,7 @@ public class Methods {
     }
     public int getMethodLineNumber(String name, String filePath) {
         int number = 0;
+        name = name.split("\\(")[0];
         try (LineNumberReader lr = new LineNumberReader(new FileReader(new File(filePath)))) {
             while(lr.ready()) {
                 if(lr.readLine().contains(name)) {
