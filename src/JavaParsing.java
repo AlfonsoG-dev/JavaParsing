@@ -6,8 +6,8 @@ import java.util.List;
 class JavaParsing {
     public static void main(String[] args) {
         Methods m = new Methods();
-        // String filePath = "./src/Application/Models/Methods.java";
-        String filePath = "./docs/JavaSample.java";
+        String filePath = "./src/Application/Utils/PrintFormat.java";
+        // String filePath = "./docs/JavaSample.java";
         m.initializeLists(filePath);
 
         Arguments a = new Arguments(m);
@@ -20,7 +20,9 @@ class JavaParsing {
         PrintFormat p = new PrintFormat(filePath, m);
 
         System.out.println(
-            m.getMethodsName().size()  + " | " + r.getReturnTypeFromLine().size() + " | " + a.getArgumentsFromLine().size() + "\n"
+            "\n" + m.getMethodsName().size()  +
+            " | " + r.getReturnTypeFromLine().size() +
+            " | " + a.getArgumentsFromLine().size() + "\n"
         );
         for(int i=0; i<max; ++i) {
             p.printLineMethod(
