@@ -17,8 +17,13 @@ public class JavaSample {
         return false;
     }
     int count() {
+        Opetators o = (a, b) -> a +b ;
         return 0;
     }
 }
 record Person(int age, String name, boolean married) {
+}
+
+interface Opetators {
+    public int sum(int a, int b);
 }
