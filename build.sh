@@ -1,4 +1,3 @@
-
 #!/bin/bash
 srcClases="./src/*.java ./src/Application/Operations/*.java ./src/Application/Utils/*.java ./src/Application/Models/*.java "
 javac -Werror -Xlint:all -d ./bin/ $srcClases

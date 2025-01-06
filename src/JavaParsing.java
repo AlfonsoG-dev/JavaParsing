@@ -6,7 +6,7 @@ import java.util.List;
 class JavaParsing {
     public static void main(String[] args) {
         Methods m = new Methods();
-        String filePath = "./src/Application/Utils/PrintFormat.java";
+        String filePath = "./src/Application/Models/Methods.java";
         // String filePath = "./docs/JavaSample.java";
         m.initializeLists(filePath);
 
