@@ -15,7 +15,7 @@ class JavaParsing {
         ReturnType r = new ReturnType(m);
 
         FileUtils u = new FileUtils();
-        m.getMethodContent("getMethodContent", filePath);
+        m.getMethodContent("getMethodContent");
 
     }
 }

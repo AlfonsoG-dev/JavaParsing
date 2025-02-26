@@ -14,7 +14,7 @@ public class PrintFormat {
     }
 
     public void printLineMethod(String completeMethod,String method, String returnType, String prop) {
-        int lineNumber = m.getMethodLineNumber(completeMethod, f.getPath());
+        int lineNumber = m.getMethodLineNumber(completeMethod);
         System.out.println(
             String.format(
                 "%s:%s  %s -> %s%s",f.getPath(), lineNumber, returnType, method, prop

@@ -16,6 +16,7 @@ public class Methods {
     private FileOperations op;
     private List<String> lines;
     public List<String> declarations;
+    private String filePath;
     public Methods(List<String> lines) {
         op = new FileOperations();
         this.lines = lines;
@@ -25,6 +26,7 @@ public class Methods {
     }
     public void initializeLists(String filePath){
         try {
+            this.filePath = filePath;
             declarations = Arrays.asList(DECLARATION_KEYWORDS);
             lines = op.getLinesOfFile(filePath)
                 .stream()
@@ -131,7 +133,7 @@ public class Methods {
         }
         return index;
     }
-    public int getMethodLineNumber(String name, String filePath) {
+    public int getMethodLineNumber(String name) {
         int number = 0;
         try (LineNumberReader lr = new LineNumberReader(new FileReader(new File(filePath)))) {
             while(lr.ready()) {
@@ -144,12 +146,12 @@ public class Methods {
         }
         return number;
     }
-    public void getMethodContent(String searched, String filePath) {
+    public void getMethodContent(String searched) {
         List<String> declarations = this.getMethodsFromFile();
         try {
             String[] searchedValues = this.searchMethod(searched);
-            int first = this.getMethodLineNumber(searchedValues[0], filePath);
-            int second = this.getMethodLineNumber(searchedValues[1], filePath);
+            int first = this.getMethodLineNumber(searchedValues[0]);
+            int second = this.getMethodLineNumber(searchedValues[1]);
             List<String> fileLines = op.getLinesOfFile(filePath);
             if(second == first) {
                 second = fileLines.size();
