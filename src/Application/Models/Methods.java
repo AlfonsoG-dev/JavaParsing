@@ -154,6 +154,9 @@ public class Methods {
             if(second == first) {
                 second = fileLines.size();
             }
+            if(second == 0) {
+                second = first;
+            }
             System.out.println(filePath + ":" + first + "\n");
             for(int i=first-1; i<second-1; ++i) {
                 System.out.println(fileLines.get(i));
