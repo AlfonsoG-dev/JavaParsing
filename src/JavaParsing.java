@@ -1,5 +1,6 @@
 import Application.Models.*;
 import Application.Utils.PrintFormat;
+import Application.Utils.FileUtils;
 
 import java.util.List;
 
@@ -13,25 +14,8 @@ class JavaParsing {
         Arguments a = new Arguments(m);
         ReturnType r = new ReturnType(m);
 
-        List<String> declarations = m.getMethodsFromFile();
-
-        int max = declarations.size();
-
-        PrintFormat p = new PrintFormat(filePath, m);
-
-        System.out.println(
-            "\n" + m.getMethodsName().size()  +
-            " | " + r.getReturnTypeFromLine().size() +
-            " | " + a.getArgumentsFromLine().size() + "\n"
-        );
-        for(int i=0; i<max; ++i) {
-            p.printLineMethod(
-                declarations.get(i),
-                m.getMethodsName().get(i),
-                r.getReturnTypeFromLine().get(i),
-                a.getArgumentsFromLine().get(i)
-            );
-        }
+        FileUtils u = new FileUtils();
+        m.getMethodContent("getMethodContent", filePath);
 
     }
 }

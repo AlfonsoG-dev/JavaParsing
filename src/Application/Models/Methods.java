@@ -16,7 +16,6 @@ public class Methods {
     private FileOperations op;
     private List<String> lines;
     public List<String> declarations;
-    
     public Methods(List<String> lines) {
         op = new FileOperations();
         this.lines = lines;
@@ -24,7 +23,6 @@ public class Methods {
     public Methods() {
         op = new FileOperations();
     }
-    
     public void initializeLists(String filePath){
         try {
             declarations = Arrays.asList(DECLARATION_KEYWORDS);
@@ -106,6 +104,25 @@ public class Methods {
         }
         return names;
     }
+    public String[] searchMethod(String methodName) throws Exception {
+        List<String> methods = getMethodsFromFile();
+        String[] searched = new String[2];
+        for(int i=0; i<methods.size(); ++i) {
+            String f = methods.get(i).split("\\(")[0];
+            if(f.toLowerCase().contains(methodName.toLowerCase())) {
+                searched[0] = methods.get(i);
+                if((i+1) < methods.size()) {
+                    searched[1] = methods.get(i+1);
+                } else {
+                    searched[1] = methods.get(i);
+                }
+            }
+        }
+        if(searched.equals("")) {
+            throw new Exception("Method not found");
+        }
+        return searched;
+    }
     public int getMethodIndex(String methodName) {
         int index = 0;
         List<String> names = getMethodsName();
@@ -122,11 +139,27 @@ public class Methods {
                     number = lr.getLineNumber();
                 }
             }
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
         return number;
     }
-    
+    public void getMethodContent(String searched, String filePath) {
+        List<String> declarations = this.getMethodsFromFile();
+        try {
+            String[] searchedValues = this.searchMethod(searched);
+            int first = this.getMethodLineNumber(searchedValues[0], filePath);
+            int second = this.getMethodLineNumber(searchedValues[1], filePath);
+            List<String> fileLines = op.getLinesOfFile(filePath);
+            if(second == first) {
+                second = fileLines.size();
+            }
+            System.out.println(filePath + ":" + first + "\n");
+            for(int i=first-1; i<second-1; ++i) {
+                System.out.println(fileLines.get(i));
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
