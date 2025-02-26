@@ -116,7 +116,6 @@ public class Methods {
     }
     public int getMethodLineNumber(String name, String filePath) {
         int number = 0;
-        name = name.split("\\(")[0];
         try (LineNumberReader lr = new LineNumberReader(new FileReader(new File(filePath)))) {
             while(lr.ready()) {
                 if(lr.readLine().contains(name)) {
