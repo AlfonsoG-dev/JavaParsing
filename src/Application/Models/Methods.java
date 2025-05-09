@@ -120,7 +120,7 @@ public class Methods {
                 }
             }
         }
-        if(searched.equals("")) {
+        if(searched[0] != null) {
             throw new Exception("Method not found");
         }
         return searched;
@@ -147,7 +147,6 @@ public class Methods {
         return number;
     }
     public void getMethodContent(String searched) {
-        List<String> declarations = this.getMethodsFromFile();
         try {
             String[] searchedValues = this.searchMethod(searched);
             int first = this.getMethodLineNumber(searchedValues[0]);
