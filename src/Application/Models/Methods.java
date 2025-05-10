@@ -41,7 +41,7 @@ public class Methods {
 
     private boolean isLineMethod(String line) {
         boolean isMethod = false;
-        if(line.contains("(") && line.contains(")")) {
+        if(line.contains("(") && line.contains(")") && !line.endsWith(";")) {
             String m = line.split("\\(")[0];
             String[] spaces = m.split(" ");
             if(spaces.length > 1) {
@@ -120,7 +120,7 @@ public class Methods {
                 }
             }
         }
-        if(searched[0] != null) {
+        if(searched[0] == null) {
             throw new Exception("Method not found");
         }
         return searched;
