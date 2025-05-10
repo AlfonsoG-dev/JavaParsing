@@ -1,6 +1,5 @@
 import Application.Models.*;
-import Application.Utils.FileUtils;
-
+import Application.Utils.PrintFormat;
 
 class JavaParsing {
     public static void main(String[] args) {
@@ -12,8 +11,17 @@ class JavaParsing {
         Arguments a = new Arguments(m);
         ReturnType r = new ReturnType(m);
 
-        FileUtils u = new FileUtils();
+        PrintFormat print = new PrintFormat(filePath, m);
 
-        m.getMethodContent("getMethodLineNumber");
+        int total = m.getMethodsFromFile().size();
+        for(int i=0; i<total; ++i) {
+            String methodName = m.getMethodsName().get(i);
+            print.printLineMethod(
+                m.getMethodsFromFile().get(i),
+                methodName,
+                r.getReturnTypeOfMethod(methodName),
+                a.getArgumentsOfMethod(methodName)
+            );
+        }
     }
 }
