@@ -6,7 +6,6 @@ import java.util.List;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
 public class FileOperations {
     private FileUtils fileUtils;
@@ -18,7 +17,7 @@ public class FileOperations {
     public List<File> getFilesOfDirectory(String dirPath) throws IOException {
         File f = new File(dirPath);
         if (!f.isDirectory()) throw new IOException("[Error] only directory type is allowed.");
-        return fileUtils.getDirectorFiles(Files.newDirectoryStream(f.toPath()));
+        return fileUtils.getDirectorFiles(f);
     }
 
     public List<String> getLinesOfFile(String filePath) throws IOException {
