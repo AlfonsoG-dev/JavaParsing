@@ -20,7 +20,6 @@ public class FileUtils {
         try {
             files = Files.walk(dir.toPath(), FileVisitOption.FOLLOW_LINKS)
                 .map(Path::toFile)
-                .filter(p -> p.isDirectory() && p.listFiles() != null)
                 .toList();
         } catch(IOException e) {
             e.printStackTrace();
