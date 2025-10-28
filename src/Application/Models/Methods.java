@@ -28,7 +28,7 @@ public class Methods {
         return m;
     }
 
-    public List<String> getMethods() {
+    public List<String> getMethodsDeclaration() {
         List<String> methodLines = new ArrayList<>();
         List<String> methods = new ArrayList<>();
         for(int i=0; i<getLines().size(); ++i) {
