@@ -74,7 +74,7 @@ public class FileParser {
     }
     public final void parse() {
         Methods m = new Methods(getDeclarations());
-        m.getArguments()
+        m.getReturnType()
         .stream()
         .forEach(System.out::println);
     }

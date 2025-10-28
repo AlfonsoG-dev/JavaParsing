@@ -5,8 +5,40 @@ import java.util.List;
 
 public class Methods {
     private List<String> declarations;
+    private final static String[] TOKENS =  {
+        "public",
+        "private",
+        "record",
+        "interface",
+        "class",
+        "static",
+        "final",
+    };
     public Methods(List<String> declarations) {
         this.declarations = declarations;
+    }
+
+    public List<String> getReturnType() {
+        List<String> type = new ArrayList<>();
+        for(String d: declarations) {
+            if(d.contains("->")) {
+                type.add(d.split(" ")[0]);
+            } else {
+                String name = d.split("\\(")[0];
+                String[] spaces = name.split(" ");
+                if(spaces.length > 2) {
+                    type.add(spaces[spaces.length-2]);
+                } else {
+                    for(String t: TOKENS) {
+                        if(spaces[0].equals(t)) {
+                            spaces[0] = spaces[1];
+                        }
+                    }
+                    type.add(spaces[0]);
+                }
+            }
+        }
+        return type;
     }
 
     public List<String> getArguments() {
