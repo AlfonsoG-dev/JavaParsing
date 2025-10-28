@@ -1,9 +1,8 @@
-import Application.Utils.FileUtils;
+import Application.Parser.FileParser;
 class JavaParsing {
     public static void main(String[] args) {
-        FileUtils fu = new FileUtils("./src");
-        fu.fileLines("./src/Application/Utils/FileUtils.java")
-        .stream()
-        .forEach(System.out::println);
+        String f = "./docs/JavaSample.java";
+        FileParser p = new FileParser(f);
+        p.parse();
     }
 }
