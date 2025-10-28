@@ -1,5 +1,3 @@
-package docs;
-
 public class JavaSample {
     private final static int age = 18;
     public JavaSample()
