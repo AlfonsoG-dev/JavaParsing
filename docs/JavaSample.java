@@ -15,7 +15,7 @@ public class JavaSample {
         return false;
     }
     int count() {
-        Opetators o = (a, b) -> a +b ;
+        Opetators o = (a, b) -> a + b;
         return 0;
     }
 }
