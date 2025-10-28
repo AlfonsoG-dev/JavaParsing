@@ -16,7 +16,33 @@ public class Methods {
             if(arguments.length == 0 || arguments[0].isEmpty()) {
                 types.add("()");
             } else {
-                types.add("(" + arguments[0] + ")");
+                for(int i=0; i<arguments.length; ++i) {
+                    if(arguments[i].endsWith(";")) {
+                        arguments[i] = "";
+                    }
+                    if(arguments[i].contains(",")) {
+                        String l = arguments[i] + ",";
+                        String[] comas = l.split(",");
+                        String or = "";
+                        for(int j=0; j<comas.length; ++j) {
+                            String a = comas[j].trim();
+                            String[] spaces = a.split(" ");
+                            if(spaces.length == 1) {
+                                or += spaces[0] + ", ";
+                            } else {
+                                or += spaces[0] + ", ";
+                            }
+                        }
+                        if(or != "") {
+                            types.add("(" + or.substring(0, or.length()-2) + ")");
+                        }
+                    } else if(arguments[i] != "") {
+                        String[] s = arguments[i].split(" ");
+                        if(s.length > 0) {
+                            types.add("(" + s[0] + ")");
+                        }
+                    }
+                }
             }
         }
         return types;
