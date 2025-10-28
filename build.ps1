@@ -1,6 +1,6 @@
-$srcClases = ".\src\*.java .\src\Application\Operations\*.java .\src\Application\Utils\*.java .\src\Application\Models\*.java "
+$srcClases = "src\*.java src\Application\Utils\*.java "
 $libFiles = ""
-$compile = "javac -Werror -Xlint:all -d .\bin\ $srcClases"
+$compile = "javac --release 23 -Werror -Xlint:all -d .\bin\ $srcClases"
 $createJar = "jar -cfm JavaParsing.jar Manifesto.txt -C .\bin\ ."
 $javaCommand = "java -jar JavaParsing.jar"
 $runCommand = "$compile" + " && " + "$createJar" + " && " +"$javaCommand"
