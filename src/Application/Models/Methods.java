@@ -9,6 +9,18 @@ public class Methods {
         this.declarations = declarations;
     }
 
+    public List<String> getArguments() {
+        List<String> types = new ArrayList<>();
+        for(String d: declarations) {
+            String[] arguments = d.split("\\(")[1].split("\\)");
+            if(arguments.length == 0 || arguments[0].isEmpty()) {
+                types.add("()");
+            } else {
+                types.add("(" + arguments[0] + ")");
+            }
+        }
+        return types;
+    }
 
     public List<String> getMethods() {
         List<String> methods = new ArrayList<>();
