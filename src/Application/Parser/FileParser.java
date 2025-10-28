@@ -21,7 +21,9 @@ public class FileParser {
     public final void parse() {
         FileUtils fu = new FileUtils("");
         Methods m = new Methods(fu.fileLines(filePath));
-        m.getMethods();
+        m.getMethods()
+        .stream()
+        .forEach(System.out::println);
     }
 
 }
