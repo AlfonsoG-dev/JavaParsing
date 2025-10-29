@@ -59,11 +59,7 @@ public class Methods {
                         for(int j=0; j<comas.length; ++j) {
                             String a = comas[j].trim();
                             String[] spaces = a.split(" ");
-                            if(spaces.length == 1) {
-                                or += spaces[0] + ", ";
-                            } else {
-                                or += spaces[0] + ", ";
-                            }
+                            or += spaces[0] + ", ";
                         }
                         if(or != "") {
                             types.add("(" + or.substring(0, or.length()-2) + ")");

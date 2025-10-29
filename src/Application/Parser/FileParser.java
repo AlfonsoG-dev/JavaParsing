@@ -54,9 +54,8 @@ public class FileParser {
                     if(cl.endsWith("{") || cl.endsWith(")")) {
                         mine.append(cl);
                         break;
-                    } else {
-                        mine.append(cl);
                     }
+                    mine.append(cl);
                     ++n;
                 }
                 methodLines.add(mine.toString().replace("{", ""));
@@ -74,7 +73,7 @@ public class FileParser {
     }
     public final void parse() {
         Methods m = new Methods(getDeclarations());
-        m.getReturnType()
+        m.getArguments()
         .stream()
         .forEach(System.out::println);
     }
