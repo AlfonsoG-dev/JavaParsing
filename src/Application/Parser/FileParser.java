@@ -28,7 +28,7 @@ public class FileParser {
     }
     private boolean isMethod(String l) {
         boolean m = false;
-        if(!l.contains(".") && (l.contains("(") || l.contains(")")) && l.length() > 1) {
+        if(!l.contains(".") && !l.startsWith("}") && (l.contains("(") || l.contains(")")) && l.length() > 1) {
             m = true;
         }
         return m;
@@ -58,9 +58,9 @@ public class FileParser {
                     mine.append(cl);
                     ++n;
                 }
-                methodLines.add(mine.toString().replace("{", ""));
+                methodLines.add(mine.toString().replace("{", "").trim());
             } else if(isMethod(line)) {
-                methodLines.add(line.replace("{", ""));
+                methodLines.add(line.replace("{", "").trim());
             }
         }
         methods.addAll(
@@ -72,8 +72,11 @@ public class FileParser {
         return methods;
     }
     public final void parse() {
-        Methods m = new Methods(getDeclarations());
-        m.getMethods()
+        // Methods m = new Methods(getDeclarations());
+        // m.getMethods()
+        // .stream()
+        // .forEach(System.out::println);
+        getDeclarations()
         .stream()
         .forEach(System.out::println);
     }
