@@ -28,7 +28,9 @@ public class FileParser {
     }
     private boolean isMethod(String l) {
         boolean m = false;
-        if(!l.contains(".") && !l.startsWith("}") && (l.contains("(") || l.contains(")")) && l.length() > 1) {
+        boolean isComment = l.startsWith("//") || l.startsWith("/*") || l.startsWith("*");
+        boolean isCloseMethodPrefix = l.endsWith(")") || l.endsWith("{");
+        if(!l.contains(".") && !isComment && isCloseMethodPrefix && !l.startsWith("}")) {
             m = true;
         }
         return m;
