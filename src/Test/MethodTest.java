@@ -12,13 +12,17 @@ public class MethodTest {
         "JavaSample", "void", "boolean", "int", "Opetators", "Person", "int"
     };
     private final String[] TEST_ARGUMENTS = {
-        "()",
-        "(int)",
-        "(String, String, int, int, String[])",
-        "()",
-        "(a, b)",
-        "(int, String, boolean)",
-        "(int, int)"
+        "()", "(int)", "(String, String, int, int, String[])",
+        "()", "(a, b)", "(int, String, boolean)", "(int, int)"
+    };
+    private final String[] TEST_METHOD_NAMES = {
+        "JavaSample",
+        "greet",
+        "isRunning",
+        "count",
+        "Opetators",
+        "Person",
+        "sum"
     };
 
     public MethodTest() {
@@ -40,12 +44,12 @@ public class MethodTest {
             List<String> expected = Arrays.asList(TEST_RETURN_TYPES);
             if(!receive.containsAll(expected)) {
                 throw new Exception(
-                    "Expected: " + expected.toString() + "\nReceive: " + receive.toString()
+                    "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
                 );
             }
             System.out.println("[Info] No error where produce during test execution of getReturnTypeTest");
         } catch(Exception e) {
-            System.err.println("[Error] While trying to execute getReturnTypeTest:\n" + e.getLocalizedMessage());
+            System.err.println("\n[Error] While trying to execute getReturnTypeTest:\n" + e.getLocalizedMessage() + "\n");
         }
     }
     public void getArgumentsTest() {
@@ -54,12 +58,26 @@ public class MethodTest {
             List<String> expected = Arrays.asList(TEST_ARGUMENTS);
             if(!receive.containsAll(expected)) {
                 throw new Exception(
-                    "Expected: " + expected.toString() + "\nReceive: " + receive.toString()
+                    "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
                 );
             }
             System.out.println("[Info] No error where produce during test execution of getArgumentsTest");
         } catch (Exception e) {
-            System.err.println("[Error] While trying to execute getArgumentsTest:\n" + e.getLocalizedMessage());
+            System.err.println("\n[Error] While trying to execute getArgumentsTest:\n" + e.getLocalizedMessage() + "\n");
+        }
+    }
+    public void getMethodNameTest() {
+        try {
+            List<String> receive = methods.getMethods();
+            List<String> expected = Arrays.asList(TEST_METHOD_NAMES);
+            if(!receive.containsAll(expected)) {
+                throw new Exception(
+                    "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
+                );
+            }
+            System.out.println("[Info] No error where produce during test execution of getMethodNameTest");
+        } catch (Exception e) {
+            System.err.println("\n[Error] While trying to execute getMethodNameTest:\n" + e.getLocalizedMessage() + "\n");
         }
     }
 
@@ -67,6 +85,7 @@ public class MethodTest {
         MethodTest t = new MethodTest();
         t.getReturnTypeTest();
         t.getArgumentsTest();
+        t.getMethodNameTest();
     }
     
 }
