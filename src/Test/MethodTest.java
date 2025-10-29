@@ -8,6 +8,9 @@ public class MethodTest {
 
     private Methods methods;
 
+    /**
+     * test data base on JavaSample file on docs folder
+     */
     private final String[] TEST_RETURN_TYPES = {
         "JavaSample", "void", "boolean", "int", "Opetators", "Person", "int"
     };
@@ -42,7 +45,7 @@ public class MethodTest {
         try {
             List<String> receive = methods.getReturnType();
             List<String> expected = Arrays.asList(TEST_RETURN_TYPES);
-            if(!receive.containsAll(expected)) {
+            if(!expected.containsAll(receive)) {
                 throw new Exception(
                     "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
                 );
@@ -56,7 +59,7 @@ public class MethodTest {
         try {
             List<String> receive = methods.getArguments();
             List<String> expected = Arrays.asList(TEST_ARGUMENTS);
-            if(!receive.containsAll(expected)) {
+            if(!expected.containsAll(receive)) {
                 throw new Exception(
                     "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
                 );
@@ -70,7 +73,7 @@ public class MethodTest {
         try {
             List<String> receive = methods.getMethods();
             List<String> expected = Arrays.asList(TEST_METHOD_NAMES);
-            if(!receive.containsAll(expected)) {
+            if(!expected.containsAll(receive)) {
                 throw new Exception(
                     "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
                 );
