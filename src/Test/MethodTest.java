@@ -50,7 +50,7 @@ public class MethodTest {
                     "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
                 );
             }
-            System.out.println("[Info] No error where produce during test execution of getReturnTypeTest");
+            System.out.println("[Info] Successfully execution of getReturnTypeTest");
         } catch(Exception e) {
             System.err.println("\n[Error] While trying to execute getReturnTypeTest:\n" + e.getLocalizedMessage() + "\n");
         }
@@ -64,7 +64,7 @@ public class MethodTest {
                     "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
                 );
             }
-            System.out.println("[Info] No error where produce during test execution of getArgumentsTest");
+            System.out.println("[Info] successfully execution of getArgumentsTest");
         } catch (Exception e) {
             System.err.println("\n[Error] While trying to execute getArgumentsTest:\n" + e.getLocalizedMessage() + "\n");
         }
@@ -78,7 +78,7 @@ public class MethodTest {
                     "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
                 );
             }
-            System.out.println("[Info] No error where produce during test execution of getMethodNameTest");
+            System.out.println("[Info] Successfully execution of getMethodNameTest");
         } catch (Exception e) {
             System.err.println("\n[Error] While trying to execute getMethodNameTest:\n" + e.getLocalizedMessage() + "\n");
         }

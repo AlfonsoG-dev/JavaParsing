@@ -28,7 +28,7 @@ public class FileParserTest {
                     "\tExpected: " + expected.toString() + "\n\tReceive: " + receive.toString()
                 );
             }
-            System.out.println("[Info] No error where produce during test execution of getDeclarationsTest");
+            System.out.println("[Info] Successfully execution of getDeclarationsTest");
         } catch (Exception e) {
             System.err.println("\n[Error] While trying to execute getDeclarationsTest: \n" + e.getLocalizedMessage() + "\n");
         }
