@@ -31,7 +31,11 @@ public class FileParser {
         boolean isComment = l.startsWith("//") || l.startsWith("/*") || l.startsWith("*");
         boolean isCloseMethodPrefix = l.endsWith(")") || l.endsWith("{");
         if(!l.contains(".") && !isComment && isCloseMethodPrefix && !l.startsWith("}")) {
-            m = true;
+            String name = l.split("\\(", 2)[0];
+            String[] spaces = name.split(" ");
+            if(spaces.length > 1) {
+                m = true;
+            }
         }
         return m;
     }
