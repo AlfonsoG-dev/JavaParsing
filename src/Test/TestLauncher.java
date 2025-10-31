@@ -1,5 +1,7 @@
 package Test;
 
+import Test.Cases.*;
+
 public class TestLauncher {
     private final static MethodTest mt = new MethodTest();
     private final static FileParserTest fpt = new FileParserTest();
