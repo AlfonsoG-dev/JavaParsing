@@ -83,12 +83,5 @@ public class MethodTest {
             System.err.println("\n[Error] While trying to execute getMethodNameTest:\n" + e.getLocalizedMessage() + "\n");
         }
     }
-
-    public static void main(String[] args) {
-        MethodTest t = new MethodTest();
-        t.getReturnTypeTest();
-        t.getArgumentsTest();
-        t.getMethodNameTest();
-    }
     
 }

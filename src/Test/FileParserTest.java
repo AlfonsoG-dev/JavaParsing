@@ -33,9 +33,4 @@ public class FileParserTest {
             System.err.println("\n[Error] While trying to execute getDeclarationsTest: \n" + e.getLocalizedMessage() + "\n");
         }
     }
-    public static void main(String[] args) {
-        FileParserTest p = new FileParserTest();
-        p.getDeclarationsTest();
-    }
-    
 }
