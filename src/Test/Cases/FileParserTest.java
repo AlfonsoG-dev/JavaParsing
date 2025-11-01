@@ -1,8 +1,10 @@
-package Cases;
+package Test.Cases;
+
+import Application.Parser.FileParser;
+
 import java.util.Arrays;
 import java.util.List;
 
-import Parser.FileParser;
 public class FileParserTest {
     private FileParser parser;
     private final String[] TEST_DECLARATIONS = {

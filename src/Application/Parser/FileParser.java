@@ -1,7 +1,7 @@
-package Parser;
+package Application.Parser;
 
-import Utils.FileUtils;
-import Models.Methods;
+import Application.Utils.FileUtils;
+import Application.Models.Methods;
 
 import java.io.File;
 

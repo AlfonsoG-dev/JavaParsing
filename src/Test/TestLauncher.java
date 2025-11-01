@@ -1,4 +1,5 @@
-import Cases.*;
+package Test;
+import Test.Cases.*;
 
 class TestLauncher {
     private final static MethodTest mt = new MethodTest();

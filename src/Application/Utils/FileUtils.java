@@ -1,4 +1,4 @@
-package Utils;
+package Application.Utils;
 
 import java.io.File;
 import java.io.FileReader;
