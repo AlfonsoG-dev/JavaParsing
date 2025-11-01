@@ -1,7 +1,8 @@
-Source-Path: src
+Root-Path: src
+Source-Path: src\Application
 Class-Path: bin
 Main-Class: JavaParsing
 Test-Path: src\Test
-Test-Class: Test.TestLauncher
+Test-Class: TestLauncher
 Libraries: 
 Compile-Flags: -Werror -Xlint:all -Xdiags:verbose
