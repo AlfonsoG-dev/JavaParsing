@@ -1,4 +1,4 @@
-import Application.Parser.FileParser;
+import Parser.FileParser;
 class JavaParsing {
     public static void main(String[] args) {
         String f = "./src/Application/Parser/FileParser.java";
