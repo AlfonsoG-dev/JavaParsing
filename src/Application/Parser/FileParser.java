@@ -1,13 +1,13 @@
-package Application.Parser;
-
-import Application.Utils.FileUtils;
-import Application.Models.Methods;
+package application.parser;
 
 import java.io.File;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
+
+import application.models.Methods;
+import application.utils.FileUtils;
 
 
 /**

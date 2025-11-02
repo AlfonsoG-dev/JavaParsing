@@ -1,9 +1,9 @@
-package Test.Cases;
-
-import Application.Parser.FileParser;
+package test.cases;
 
 import java.util.Arrays;
 import java.util.List;
+
+import application.parser.FileParser;
 
 public class FileParserTest {
     private FileParser parser;

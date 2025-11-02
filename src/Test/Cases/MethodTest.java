@@ -1,9 +1,9 @@
-package Test.Cases;
-
-import Application.Models.Methods;
+package test.cases;
 
 import java.util.Arrays;
 import java.util.List;
+
+import application.models.Methods;
 
 
 public class MethodTest {

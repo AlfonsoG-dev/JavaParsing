@@ -1,5 +1,5 @@
-package Application;
-import Application.Parser.FileParser;
+package application;
+import application.parser.FileParser;
 class JavaParsing {
     public static void main(String[] args) {
         String f = "./src/Application/Parser/FileParser.java";
