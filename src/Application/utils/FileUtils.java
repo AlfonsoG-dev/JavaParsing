@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class FileUtils {
-
     /**
      * Traverse the entire file path provided to find only the files.
      * @param fileURI - the file path to see if it has files.
