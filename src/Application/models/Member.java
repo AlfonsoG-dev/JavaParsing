@@ -24,6 +24,14 @@ public class Member {
         }
         return names;
     }
+    private void appendMethodParameters(List<String> types, Map<String, List<String>> args, Method m, Class<?>[] parameterTypes) {
+        if(!m.getName().contains("$")) {
+            for(Class<?> c: parameterTypes) {
+                types.add(c.getSimpleName());
+            }
+            args.put(m.getName(), types);
+        }
+    }
     public Map<String, List<String>> getArguments() {
         Map<String, List<String>> args = new HashMap<>();
         Method[] methods = myClass.getDeclaredMethods();
@@ -31,10 +39,7 @@ public class Member {
             for(Method m: methods) {
                 Class<?>[] parameterTypes = m.getParameterTypes();
                 List<String> types = new ArrayList<>();
-                for(Class<?> c: parameterTypes) {
-                    types.add(c.getSimpleName());
-                }
-                args.put(m.getName(), types);
+                appendMethodParameters(types, args, m, parameterTypes);
             }
         }
         return args;

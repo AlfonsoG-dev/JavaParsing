@@ -5,4 +5,5 @@ Main-Class: application.JavaParsing
 Test-Path: src\test
 Test-Class: test.TestLauncher
 Libraries: 
-Compile-Flags: -Werror -Xlint:all -Xdiags:verbose
+Compile-Flags: -Werror -Xlint:all -Xdiags:verbose -g
+
